@@ -1,3 +1,6 @@
+
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
@@ -20,51 +23,11 @@ class _CircularPercentsState extends State<CircularPercents> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CircularPercentIndicator(
-                  radius: 50.0,
-                  lineWidth: 7.0,
-                  animation: true,
-                  percent: 0.65,
-                  center: Text(
-                    "65.0%",
-                    style: TextStyle(
-                        fontFamily: 'VarelaRound', fontSize: 17.0),
-                  ),
-                  footer: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Flutter",
-                      style: TextStyle(
-                          fontFamily: 'VarelaRound', fontSize: 17.0),
-                    ),
-                  ),
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Color(0xff4285f4),
-                ),
+                child: CircularPercentManager(name: "Flutter", yuzde: 70.6, renk: Color(0xff4285f4))
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CircularPercentIndicator(
-                  radius: 50.0,
-                  lineWidth: 7.0,
-                  animation: true,
-                  percent: 0.55,
-                  center: Text(
-                    "55.0%",
-                    style: TextStyle(
-                        fontFamily: 'VarelaRound', fontSize: 17.0),
-                  ),
-                  footer: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Girişimcilik",
-                      style: TextStyle(
-                          fontFamily: 'VarelaRound', fontSize: 17.0),
-                    ),
-                  ),
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Color(0xff34a853),
-                ),
+                child: CircularPercentManager(name: "Unity", yuzde: 65.0, renk: Color(0xff34a853))
               ),
             ],
           ),
@@ -74,56 +37,58 @@ class _CircularPercentsState extends State<CircularPercents> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CircularPercentIndicator(
-                  radius: 50.0,
-                  lineWidth: 7.0,
-                  animation: true,
-                  percent: 0.1,
-                  center: Text(
-                    "70.0%",
-                    style: TextStyle(
-                        fontFamily: 'VarelaRound', fontSize: 17.0),
-                  ),
-                  footer: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Unity",
-                      style: TextStyle(
-                          fontFamily: 'VarelaRound', fontSize: 17.0),
-                    ),
-                  ),
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Color(0xffe94235),
-                ),
+                child: CircularPercentManager(name: "Girişimcilik", yuzde: 100,renk: Color(0xffe94235))
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: CircularPercentIndicator(
-                  radius: 50.0,
-                  lineWidth: 7.0,
-                  animation: true,
-                  percent: 0.25,
-                  center: Text(
-                    "25.0%",
-                    style: TextStyle(
-                        fontFamily: 'VarelaRound', fontSize: 17.0),
-                  ),
-                  footer: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "İngilizce",
-                      style: TextStyle(
-                          fontFamily: 'VarelaRound', fontSize: 17.0),
-                    ),
-                  ),
-                  circularStrokeCap: CircularStrokeCap.round,
-                  progressColor: Color(0xfffabb05),
-                ),
+                child: CircularPercentManager(name: "İngilizce", yuzde: 25, renk: Color(0xfffabb05),)
               ),
             ],
           ),
         ),
       ],
     );
+  }
+}
+
+class CircularPercentManager extends StatelessWidget {
+  double yuzde;
+  String name;
+  Color renk;
+
+  CircularPercentManager({
+    required this.name,
+    required this.yuzde,
+    required this.renk
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CircularPercentIndicator(
+                  radius: 50.0,
+                  lineWidth: 7.0,
+                  animation: true,
+                  percent: yuzde/100,
+                  center: Text(
+                    "$yuzde%",
+                    style: TextStyle(
+                        fontFamily: 'VarelaRound', fontSize: 17.0),
+                  ),
+                  footer: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      name,
+                      style: TextStyle(
+                          fontFamily: 'VarelaRound', fontSize: 17.0),
+                    ),
+                  ),
+                  circularStrokeCap: CircularStrokeCap.round,
+                  progressColor: renk,
+                );
+  }
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties.add(StringProperty('name', name));
   }
 }
