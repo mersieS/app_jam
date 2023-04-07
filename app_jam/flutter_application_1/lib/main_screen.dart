@@ -36,20 +36,13 @@ class _MainScreenState extends State<MainScreen> {
               MyHeader(
                   image: 'assets/koy.png',
                   textTop: 'Hoşgeldin',
-                  textBottom: 'Emrecan',
+                  textBottom: 'Kullanıcı',
                   offset: 0),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text(
-                      'Görevlerim',
-                      style: TextStyle(
-                        fontFamily: 'VarelaRound',
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    TextManager(message: "Yapılacaklar")
                   ],
                 ),
               ),
@@ -58,14 +51,7 @@ class _MainScreenState extends State<MainScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text(
-                      'İlerlemem',
-                      style: TextStyle(
-                        fontFamily: 'VarelaRound',
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    TextManager(message: "İlerlemem")
                   ],
                 ),
               ),
@@ -74,14 +60,7 @@ class _MainScreenState extends State<MainScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text(
-                      'Coursera Yardımlaşma Platformu',
-                      style: TextStyle(
-                        fontFamily: 'VarelaRound',
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    TextManager(message: "Coursera Yardımlaşma Platformu")
                   ],
                 ),
               ),
@@ -90,14 +69,7 @@ class _MainScreenState extends State<MainScreen> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text(
-                      'Yapılacaklar Listem',
-                      style: TextStyle(
-                        fontFamily: 'VarelaRound',
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    TextManager(message: "Yapılacaklar Listem")
                   ],
                 ),
               ),
@@ -120,7 +92,8 @@ class _MainScreenState extends State<MainScreen> {
                         child: Text(
                           'YAPILACAKLAR LİSTESİ',
                           style: TextStyle(
-                              fontFamily: 'VarelaRound', color: Colors.black),
+                              fontFamily: 'VarelaRound',
+                               color: Colors.black),
                         ),
                       ),
                       SizedBox(
@@ -166,3 +139,21 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
+class TextManager extends StatelessWidget {
+  String message;
+  TextManager({
+    required this.message
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      message,
+      style:TextStyle(
+        fontFamily: 'VarelaRound',
+        fontSize: 15,
+        fontWeight: FontWeight.bold,
+      )
+    );
+  }
+}
